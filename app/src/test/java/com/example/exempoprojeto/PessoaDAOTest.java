@@ -3,6 +3,7 @@ package com.example.exempoprojeto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
 
@@ -18,5 +19,12 @@ public class PessoaDAOTest {
         PessoaDAO dao = new PessoaDAO();
         assertTrue(dao.save(p));
 
+    }
+
+    @Test
+    public void deveriaSalvarPessoaMock(){
+        Pessoa p = new Pessoa("Luciano", "luciano@gmail.com");
+        PessoaDAO daoFalso = Mockito.mock(PessoaDAO.class);
+        Mockito.when(daoFalso.save(p)).thenReturn(true);
     }
 }
